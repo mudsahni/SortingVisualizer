@@ -1,0 +1,12 @@
+.progress-bar-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: transparent;
+    height: 0.3vh;
+}
+
+.progress-bar {
+    width: 100%;
+    background: var(--bar-color-default);
+}

@@ -13,6 +13,7 @@ import { DEFAULT_SPEED } from './constants';
 import Backdrop from '../../atoms/Backdrop';
 import { Legend } from '../../atoms/Legend';
 import { LegendBar } from '../../molecules/LegendBar';
+import ProgressBar from '../../atoms/ProgressBar';
 interface DynamicChartProps {
     randomArray: number[];
 }
@@ -198,12 +199,14 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
             <Backdrop>
                 <Chart array={arrayState} highlightIndex={currentIndex} comparisonIndex={comparisonIndex}
                     onGoing={onGoing} onPause={pause} />
+                <ProgressBar width={onGoing || pause ? (100 / trace.length) * traceId : 0}></ProgressBar>
                 <LegendBar>
                     <Legend color="green"><span>Current</span></Legend>
                     <Legend><span>Default</span></Legend>
                     <Legend color="yellow"><span>Comparison</span></Legend>
 
                 </LegendBar>
+
             </Backdrop>
             <Segment padded inverted color='green' >
                 <Playbar getOriginalState={getOriginalState} getSortedState={getSortedState} isSorted={isSorted}
