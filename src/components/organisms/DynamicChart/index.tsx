@@ -1,7 +1,9 @@
 import * as React from 'react'
-import { Button, Divider, Dropdown, Icon, Segment } from 'semantic-ui-react';
+import { Button, Container, Divider, Dropdown, Icon, Segment } from 'semantic-ui-react';
 import Chart from '../../molecules/Chart';
-import Playbar from '../../molecules/Playbar';
+// import Playbar from '../../molecules/Playbar';
+import Playbar from '../../molecules/Playbar2';
+
 import ChartType from '../../../typings/Chart'
 import useStateWithCallbackLazy from 'use-state-with-callback';
 import './style.css'
@@ -9,6 +11,8 @@ import { getRandomArray } from '../../../util/helper';
 import BubbleSort from '../../../algorithms/BubbleSort'
 import SelectionSort from '../../../algorithms/SelectionSort';
 import InsertionSort from '../../../algorithms/InsertionSort'
+// import MergeSort from '../../../algorithms/MergeSort';
+
 import { DEFAULT_SPEED } from './constants';
 import Backdrop from '../../atoms/Backdrop';
 import { Legend } from '../../atoms/Legend';
@@ -34,8 +38,14 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
     const [trace, setTrace] = React.useState<{ [key: string]: any }[]>([])
     const [traceId, setTraceId] = React.useState<number>(0)
     const [pause, setPause] = React.useState<boolean>(false)
+    const [groupIndices, setGroupIndices] = React.useState<{ max: number, min: number }>({ max: -1, min: -1 })
 
-    const [algorithm, setAlgorithm] = React.useState<any>({ name: "Bubble Sort", func: BubbleSort })
+    const getAlgorithmName = (name: string) => {
+        return (
+            <span><span className="algorithm-name">{name}</span> SORT</span>
+        )
+    }
+    const [algorithm, setAlgorithm] = React.useState<any>({ name: (getAlgorithmName("BUBBLE")), func: BubbleSort })
     // const [count, setCount] = useStateWithCallbackLazy(0, (count: number) => {
     //     if (count > 0 && isSorted === false) {
     //         const timer = setTimeout(BubbleSort, speed, arrayState, traceObject)
@@ -63,6 +73,7 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
 
 
     const changeVisualState = (traceObject: { [key: string]: any }) => {
+        console.log(traceObject)
         setCurrentIndex(traceObject.currentIndex)
         setComparisonIndex(traceObject.comparisonIndex)
         setUnsortedIndex(traceObject.unsortedIndex)
@@ -160,59 +171,67 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
 
 
     }
-    const options = [{ value: "Bubble Sort", key: "bubbleSort", text: "Bubble Sort" },
-    { value: "Insertion Sort", key: "insertionSort", text: "Insertion Sort" }, { value: "Selection Sort", key: "selectionSort", text: "Selection Sort" }]
+    const options = [{ value: "Bubble Sort", key: "bubble", text: "Bubble Sort" },
+    { value: "Insertion Sort", key: "insertionSort", text: "Insertion Sort" }, { value: "Selection Sort", key: "selectionSort", text: "Selection Sort" },
+    { value: "Merge Sort", key: "mergeSort", text: "Merge Sort" }]
 
     const selectAlgorithm = (_: React.SyntheticEvent, data: any) => {
         if (data.value === "Bubble Sort") {
-            setAlgorithm({ name: "Bubble Sort", func: BubbleSort })
+            setAlgorithm({ name: getAlgorithmName("BUBBLE"), func: BubbleSort })
         } else if (data.value === "Insertion Sort") {
-            setAlgorithm({ name: "Insertion Sort", func: InsertionSort })
+            setAlgorithm({ name: getAlgorithmName("INSERTION"), func: InsertionSort })
         } else if (data.value === "Selection Sort") {
-            setAlgorithm({ name: "Selection Sort", func: SelectionSort })
+            setAlgorithm({ name: getAlgorithmName("SELECTION"), func: SelectionSort })
+            // } else if (data.value === "Merge Sort") {
+            //     setAlgorithm({ name: "Merge Sort", func: MergeSort })
         } else {
-            setAlgorithm({ name: "Bubble Sort", func: BubbleSort })
+            setAlgorithm({ name: getAlgorithmName("BUBBLE"), func: BubbleSort })
         }
 
         getOriginalState()
     }
+
     return (
         <>
-            Select sorting algorithm: &nbsp;
-            <Dropdown
-                text={algorithm.name}
-                icon='dropdown'
-                floating
-                labeled
-                disabled={onGoing && true}
-                className='icon'
-            >
-                <Dropdown.Menu>
-                    <Dropdown.Header content='Algorithms' />
-                    {options.map((option) => (
-                        <Dropdown.Item onClick={selectAlgorithm} {...option} />
-                    ))}
+            <Container fluid className="chart-container">
 
-                </Dropdown.Menu>
-            </Dropdown>
+                <div className="sort-selection">
 
-            <Backdrop>
-                <Chart array={arrayState} highlightIndex={currentIndex} comparisonIndex={comparisonIndex}
-                    onGoing={onGoing} onPause={pause} />
-                <ProgressBar width={onGoing || pause ? (100 / trace.length) * traceId : 0}></ProgressBar>
-                <LegendBar>
-                    <Legend color="green"><span>Current</span></Legend>
-                    <Legend><span>Default</span></Legend>
-                    <Legend color="yellow"><span>Comparison</span></Legend>
+                    <Dropdown
+                        text={algorithm.name}
+                        icon='dropdown'
+                        floating
+                        labeled
+                        disabled={onGoing && true}
+                        className='icon'
+                    >
+                        <Dropdown.Menu>
+                            <Dropdown.Header content='Algorithms' />
+                            {options.map((option) => (
+                                <Dropdown.Item onClick={selectAlgorithm} {...option} />
+                            ))}
 
-                </LegendBar>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <LegendBar>
+                        <Legend color="green"><span>Current Index</span></Legend>
+                        <Legend color="yellow"><span>Comparison Index</span></Legend>
+                        <Legend><span>Default</span></Legend>
 
-            </Backdrop>
-            <Segment padded inverted color='green' >
-                <Playbar getOriginalState={getOriginalState} getSortedState={getSortedState} isSorted={isSorted}
-                    onPause={pause} onGoing={onGoing} decreaseSpeed={decreaseSpeed} increaseSpeed={increaseSpeed}
-                    generateNewArray={generateNewArray} sortArray={sortRun} pauseSorting={pauseSorting}></Playbar>
-            </Segment>
+                    </LegendBar>
+
+                </div>
+
+                <Backdrop>
+                    <Chart array={arrayState} highlightIndex={currentIndex} comparisonIndex={comparisonIndex}
+                        onGoing={onGoing} onPause={pause} groupIndices={groupIndices} />
+                    <ProgressBar width={onGoing || pause ? (100 / trace.length) * traceId : 0}></ProgressBar>
+
+                </Backdrop>
+            </Container>
+            <Playbar getOriginalState={getOriginalState} getSortedState={getSortedState} isSorted={isSorted}
+                onPause={pause} onGoing={onGoing} decreaseSpeed={decreaseSpeed} increaseSpeed={increaseSpeed}
+                generateNewArray={generateNewArray} sortArray={sortRun} pauseSorting={pauseSorting}></Playbar>
 
         </>
     );

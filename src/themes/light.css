@@ -1,7 +1,19 @@
 :root {
     --background-color: #fff;
-    --bar-color-default: #fff;
-    --bar-text-color-default: #fff;
-    --bar-color-primary-highlight: #21ba45;
-    --bar-color-secondary-highlight: #fbbd08;
+    --bar-color-default: #FDFDFD;
+    --bar-text-color-default: #FDFDFD;
+    --bar-color-primary-highlight: #D6EBE2;
+    --bar-color-secondary-highlight: #FAF4C4;
+    --bar-color-group-highlight: #e03997;
+    --chart-background-color: #9FC3D1;
+    --danger-color: #c86f5e;
+}
+
+i.green.icon {
+    color: var(--bar-color-primary-highlight) !important;
+}
+
+i.yellow.icon {
+    color: var(--bar-color-secondary-highlight) !important;
+
 }

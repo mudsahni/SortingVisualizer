@@ -6,7 +6,7 @@ interface BarProps {
     value: number;
     margin: number;
     width: number;
-    color: "primary-highlight" | "secondary-highlight" | "default";
+    color: "primary-highlight" | "secondary-highlight" | "default" | "group-highlight";
 }
 
 export const Bar: React.FC<BarProps> = ({ value, height, width, margin, color }) => {

@@ -1,0 +1,40 @@
+.sort-selection {
+    text-align: flex-start;
+    letter-spacing: 0.2rem;
+    color: var(--bar-text-color-default);
+    font-weight: 100;
+    font-size: 1.3rem;
+}
+
+.algorithm-name {
+    font-weight: 500;
+}
+
+.ui.floating.dropdown .menu {
+    box-shadow: none !important;
+}
+
+.ui.dropdown .menu>.header {
+    font-weight: 400 !important;
+    letter-spacing: 0.2rem;
+}
+
+.ui.dropdown .menu>.item {
+    font-weight: 300 !important;
+    letter-spacing: 0.15rem;
+}
+
+/* .ui.dropdown .menu>.item:hover {
+    background: var(--chart-background-color);
+    opacity: 0.3 !important;
+} */
+
+.ui.dropdown .menu {
+    box-shadow: none !important;
+}
+
+.chart-container {
+    /* background-color: #9FC3D1; */
+    background-color: var(--chart-background-color);
+    padding: 4vh 3vw 4vh 3vw;
+}

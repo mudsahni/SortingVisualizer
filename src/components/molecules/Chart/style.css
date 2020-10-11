@@ -4,6 +4,22 @@
     align-items: flex-end;
     justify-content: center;
     overflow: hidden;
-    padding: 1.5rem;
+    padding: 10vh 10vw 10vh 10vw;
+    text-align: center;
     /* border-bottom: 1px solid rgb(255, 255, 255, 0.1); */
 }
+
+/* .sorted {
+    align-self: center;
+    z-index: 999;
+    position: absolute;
+    margin: 0 auto;
+    color: blue;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 1rem;
+    animation: pop-text 2s ease-in 1;
+    -webkit-animation: pop-text 2s ease-in 1;
+    visibility: hidden;
+}
+ */

@@ -25,7 +25,7 @@ const Playbar: React.FC<PlaybarProps> = ({
         <div className="button-area">
             <Button.Group icon>
                 <Popup
-                    trigger={<Button type="reset" size="large" onClick={generateNewArray} color="green"  ><Icon name='refresh' /></Button>}
+                    trigger={<Button type="reset" size="large" onClick={generateNewArray} color="green"  ><Icon name='random' /></Button>}
                     content="Generate a new array."
                     basic
                 />

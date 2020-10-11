@@ -1,6 +1,6 @@
 import * as React from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import { Grid, Image, Placeholder, Segment } from 'semantic-ui-react'
+import { Container, Grid, Image, Placeholder, Segment } from 'semantic-ui-react'
 import Backdrop from './components/atoms/Backdrop';
 import { Bar } from './components/atoms/Bar';
 import './App.css'
@@ -19,12 +19,11 @@ export const App: React.FC<AppProps> = ({ }) => {
         <Grid stackable centered columns={12}>
             <Grid.Row centered columns={1}>
                 <Grid.Column>
-                    <Segment>
-                        <DynamicChart randomArray={array} />
-                    </Segment>
-                    <Segment placeholder>
 
-                    </Segment>
+                    <DynamicChart randomArray={array} />
+                    {/* <Segment placeholder>
+
+                        </Segment> */}
                 </Grid.Column>
 
             </Grid.Row>
