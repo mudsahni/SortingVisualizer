@@ -1,32 +1,3 @@
-// const BubbleSort = (array: number[], currentTrace: { [key: string]: { value: any, func: any } }) => {
-//     let sortStepArray: number[] = [...array]
-//     // let trace: any[][] = []
-//     if (sortStepArray.length === currentTrace.unsortedIndex.value) {
-//         // trace.push([-1, currentTrace.unsortedIndex.func])
-//         // trace.push([-1, currentTrace.currentIndex.func])
-//         // trace.push([true, currentTrace.isSorted.func])
-//         // return trace
-//         currentTrace.unsortedIndex.func(-1)
-//         currentTrace.currentIndex.func(-1)
-//         currentTrace.comparisonIndex.func(-1)
-//         currentTrace.isSorted.func(true)
-//     } else if (currentTrace.currentIndex.value >=
-//         sortStepArray.length - currentTrace.unsortedIndex.value) {
-//         // trace.push([1, currentTrace.currentIndex.func])
-//         // trace.push([currentTrace.unsortedIndex.value + 1, currentTrace.unsortedIndex.func])
-//         currentTrace.currentIndex.func(1)
-//         currentTrace.comparisonIndex.func(1)
-//         currentTrace.unsortedIndex.func(currentTrace.unsortedIndex.value + 1)
-//     } else {
-//         if (sortStepArray[currentTrace.currentIndex.value - 1] > sortStepArray[currentTrace.currentIndex.value]) {
-//             [sortStepArray[currentTrace.currentIndex.value - 1], sortStepArray[currentTrace.currentIndex.value]] =
-//                 [sortStepArray[currentTrace.currentIndex.value], sortStepArray[currentTrace.currentIndex.value - 1]];
-//             currentTrace.arrayState.func([...sortStepArray])
-//         }
-//         currentTrace.currentIndex.func(currentTrace.currentIndex.value + 1)
-//         currentTrace.comparisonIndex.func(currentTrace.comparisonIndex.value + 1)
-//     }
-// }
 
 const BubbleSort = (array: number[]) => {
     const n: number = array.length

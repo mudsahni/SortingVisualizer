@@ -12,7 +12,7 @@ interface AppProps {
 }
 
 export const App: React.FC<AppProps> = ({ }) => {
-    const array: number[] = getRandomArray(10, 0, 100);
+
 
     return (
 
@@ -20,38 +20,15 @@ export const App: React.FC<AppProps> = ({ }) => {
             <Grid.Row centered columns={1}>
                 <Grid.Column>
 
-                    <DynamicChart randomArray={array} />
+                    <DynamicChart />
                     {/* <Segment placeholder>
 
                         </Segment> */}
                 </Grid.Column>
 
             </Grid.Row>
-            <Grid.Row centered columns={3}>
-                <Grid.Column>
-                    <Segment>
-                        <Placeholder>
-                            <Placeholder.Line />
-                            <Placeholder.Line />
-                        </Placeholder>
-                    </Segment>
-                </Grid.Column>
-                <Grid.Column>
-                    <Segment>
-                        <Placeholder>
-                            <Placeholder.Line />
-                            <Placeholder.Line />
-                        </Placeholder>
-                    </Segment>
-                </Grid.Column>
-                <Grid.Column>
-                    <Segment>
-                        <Placeholder>
-                            <Placeholder.Line />
-                            <Placeholder.Line />
-                        </Placeholder>
-                    </Segment>
-                </Grid.Column>
+            <Grid.Row centered columns={12}>
+
             </Grid.Row>
 
         </Grid>

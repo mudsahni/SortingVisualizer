@@ -11,7 +11,7 @@ import { getRandomArray } from '../../../util/helper';
 import BubbleSort from '../../../algorithms/BubbleSort'
 import SelectionSort from '../../../algorithms/SelectionSort';
 import InsertionSort from '../../../algorithms/InsertionSort'
-// import MergeSort from '../../../algorithms/MergeSort';
+import MergeSort from '../../../algorithms/MergeSort';
 
 import { DEFAULT_SPEED } from './constants';
 import Backdrop from '../../atoms/Backdrop';
@@ -19,12 +19,15 @@ import { Legend } from '../../atoms/Legend';
 import { LegendBar } from '../../molecules/LegendBar';
 import ProgressBar from '../../atoms/ProgressBar';
 interface DynamicChartProps {
-    randomArray: number[];
 }
 
 
-const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
-    const [array, setArray] = React.useState<number[]>(randomArray)
+const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
+    const defaultArraySize: number = 10
+    const [arraySize, setArraySize] = React.useState<number>(defaultArraySize)
+    const tarray: number[] = getRandomArray(arraySize, 0, 100);
+
+    const [array, setArray] = React.useState<number[]>(tarray)
     // let array: number[] = [...randomArray]
     // const randomArray = (): number[] => getRandomArray(30, 0, 100);
     // const array = [...randomArray()]
@@ -76,10 +79,12 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
         console.log(traceObject)
         setCurrentIndex(traceObject.currentIndex)
         setComparisonIndex(traceObject.comparisonIndex)
+        setGroupIndices(traceObject.groupIndices)
         setUnsortedIndex(traceObject.unsortedIndex)
         setArrayState([...traceObject.arrayState])
         setIsSorted(traceObject.isSorted)
         setTraceId(traceId + 1)
+
 
     }
 
@@ -92,18 +97,20 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
         setSpeed(speed * 2)
     }
     const generateNewArray = () => {
-        setArray([...getRandomArray(30, 0, 100)])
-        setArrayState(array)
+        const newArray: number[] = getRandomArray(arraySize, 0, 100)
+        setArray([...newArray])
+        setArrayState(newArray)
         setIsSorted(false)
         setOnGoing(false)
         setCurrentIndex(0)
         setComparisonIndex(0)
         setUnsortedIndex(0)
-        setCount(0)
         setSpeed(speed)
         setTraceId(0)
         setTrace([])
         setPause(false)
+        setCount(0)
+
     }
 
 
@@ -153,7 +160,6 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
         setCount(0)
         setSpeed(speed)
         setTraceId(sortedArray.length)
-        setTraceId(0)
 
     }
 
@@ -167,26 +173,28 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ randomArray }) => {
         setCount(0)
         setSpeed(DEFAULT_SPEED)
         setTraceId(0)
-        setTraceId(0)
-
 
     }
+
+
     const options = [{ value: "Bubble Sort", key: "bubble", text: "Bubble Sort" },
     { value: "Insertion Sort", key: "insertionSort", text: "Insertion Sort" }, { value: "Selection Sort", key: "selectionSort", text: "Selection Sort" },
     { value: "Merge Sort", key: "mergeSort", text: "Merge Sort" }]
 
     const selectAlgorithm = (_: React.SyntheticEvent, data: any) => {
+
         if (data.value === "Bubble Sort") {
             setAlgorithm({ name: getAlgorithmName("BUBBLE"), func: BubbleSort })
         } else if (data.value === "Insertion Sort") {
             setAlgorithm({ name: getAlgorithmName("INSERTION"), func: InsertionSort })
         } else if (data.value === "Selection Sort") {
             setAlgorithm({ name: getAlgorithmName("SELECTION"), func: SelectionSort })
-            // } else if (data.value === "Merge Sort") {
-            //     setAlgorithm({ name: "Merge Sort", func: MergeSort })
+        } else if (data.value === "Merge Sort") {
+            setAlgorithm({ name: getAlgorithmName("MERGE"), func: MergeSort })
         } else {
             setAlgorithm({ name: getAlgorithmName("BUBBLE"), func: BubbleSort })
         }
+        setTrace([])
 
         getOriginalState()
     }

@@ -58,7 +58,17 @@ const Playbar: React.FC<PlaybarProps> = ({
                 basic
             />
 
+            <Popup
+                trigger={<Button type="submit" size="small" onClick={getSortedState} className="other-button" disabled={isSorted}><Icon name='angle double up' /></Button>}
+                content="Increase array size."
+                basic
+            />
 
+            <Popup
+                trigger={<Button type="submit" size="small" onClick={getSortedState} className="other-button" disabled={isSorted}><Icon name='angle double down' /></Button>}
+                content="Decrease array size."
+                basic
+            />
 
         </div>
 

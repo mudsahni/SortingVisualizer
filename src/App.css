@@ -1,2 +1,10 @@
 @import './themes/base.css';
 @import './themes/light.css';
+
+@media only screen and (max-width: 767px) {
+    .ui.container {
+        width: auto !important;
+        margin-left: 0em !important;
+        margin-right: 0em !important;
+    }
+}
