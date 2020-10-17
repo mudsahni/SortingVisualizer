@@ -42,14 +42,13 @@
 .other-button {
     color: var(--bar-text-color-default) !important;
     background: var(--chart-background-color) !important;
-    color: var(--bar-text-color-default) !important;
     /* border-radius: 100% !important; */
     /* -webkit-border-radius: 100% !important;
     -moz-border-radius: 100% !important;
     -ms-border-radius: 100% !important;
     -o-border-radius: 100% !important; */
     height: 30px;
-    width: 30px;
+    width: 50px;
     margin-top: -45px !important;
     text-align: center;
     justify-items: center;

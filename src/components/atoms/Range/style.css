@@ -1,0 +1,28 @@
+.chart-range {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    color: var(--bar-color-default);
+}
+
+
+.range-button {
+    color: var(--bar-text-color-default) !important;
+    background: var(--chart-background-color) !important;
+    margin-top: -45px !important;
+    text-align: center;
+
+}
+
+.range-button:hover {
+    filter: brightness(1.05);
+    /* opacity: 0.7 !important; */
+    color: #fff !important;
+    -webkit-filter: brightness(1.05);
+}
+
+.chart-range>.ui.button {
+    padding: 10px 1vw 10px !important;
+}

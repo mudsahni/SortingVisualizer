@@ -12,7 +12,7 @@ import BubbleSort from '../../../algorithms/BubbleSort'
 import SelectionSort from '../../../algorithms/SelectionSort';
 import InsertionSort from '../../../algorithms/InsertionSort'
 import MergeSort from '../../../algorithms/MergeSort';
-
+import Range from '../../atoms/Range';
 import { DEFAULT_SPEED } from './constants';
 import Backdrop from '../../atoms/Backdrop';
 import { Legend } from '../../atoms/Legend';
@@ -25,6 +25,7 @@ interface DynamicChartProps {
 const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
     const defaultArraySize: number = 10
     const [arraySize, setArraySize] = React.useState<number>(defaultArraySize)
+    const [hideRange, setHideRange] = React.useState<boolean>(true)
     const tarray: number[] = getRandomArray(arraySize, 0, 100);
 
     const [array, setArray] = React.useState<number[]>(tarray)
@@ -118,6 +119,7 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
     const sortRun = () => {
         setOnGoing(true)
         setPause(false)
+        setHideRange(true)
         if (!(trace.length > 0)) {
             const trace: { [key: string]: any }[] = algorithm.func([...arrayState])
             setTrace([...trace])
@@ -173,6 +175,32 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
         setCount(0)
         setSpeed(DEFAULT_SPEED)
         setTraceId(0)
+
+    }
+
+    const hideRangeFunction = () => {
+        if (hideRange) {
+            setHideRange(false)
+        } else {
+            setHideRange(true)
+        }
+    }
+
+    const changeArraySize = (_: React.SyntheticEvent, data: any) => {
+        setArraySize(data.children)
+        const newArray: number[] = getRandomArray(data.children, 0, 100)
+        setArray([...newArray])
+        setArrayState(newArray)
+        setIsSorted(false)
+        setOnGoing(false)
+        setCurrentIndex(0)
+        setComparisonIndex(0)
+        setUnsortedIndex(0)
+        setSpeed(speed)
+        setTraceId(0)
+        setTrace([])
+        setPause(pause ? false : true)
+        setCount(0)
 
     }
 
@@ -234,12 +262,13 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
                     <Chart array={arrayState} highlightIndex={currentIndex} comparisonIndex={comparisonIndex}
                         onGoing={onGoing} onPause={pause} groupIndices={groupIndices} />
                     <ProgressBar width={onGoing || pause ? (100 / trace.length) * traceId : 0}></ProgressBar>
-
+                    <Range range={10} size={changeArraySize} hide={hideRange} />
                 </Backdrop>
             </Container>
             <Playbar getOriginalState={getOriginalState} getSortedState={getSortedState} isSorted={isSorted}
                 onPause={pause} onGoing={onGoing} decreaseSpeed={decreaseSpeed} increaseSpeed={increaseSpeed}
-                generateNewArray={generateNewArray} sortArray={sortRun} pauseSorting={pauseSorting}></Playbar>
+                generateNewArray={generateNewArray} sortArray={sortRun} pauseSorting={pauseSorting} arraySize={arraySize}
+                setHideRange={hideRangeFunction}></Playbar>
 
         </>
     );

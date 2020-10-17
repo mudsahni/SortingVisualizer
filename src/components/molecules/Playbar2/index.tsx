@@ -6,6 +6,7 @@ interface PlaybarProps {
     isSorted: boolean;
     onGoing: boolean;
     onPause: boolean;
+    arraySize: number;
     getOriginalState: () => any;
     decreaseSpeed: () => any;
     generateNewArray: () => any;
@@ -13,13 +14,14 @@ interface PlaybarProps {
     increaseSpeed: () => any;
     getSortedState: () => any;
     pauseSorting: () => any;
+    setHideRange: () => any;
 
 }
 
 const Playbar: React.FC<PlaybarProps> = ({
-    isSorted, onPause, onGoing, getOriginalState,
+    isSorted, onPause, arraySize, onGoing, getOriginalState,
     decreaseSpeed, increaseSpeed, sortArray,
-    generateNewArray, getSortedState, pauseSorting }) => {
+    generateNewArray, getSortedState, pauseSorting, setHideRange }) => {
     return (
 
         <div className="button-area">
@@ -57,20 +59,14 @@ const Playbar: React.FC<PlaybarProps> = ({
                 content="Finish sorting."
                 basic
             />
-
             <Popup
-                trigger={<Button type="submit" size="small" onClick={getSortedState} className="other-button" disabled={isSorted}><Icon name='angle double up' /></Button>}
-                content="Increase array size."
-                basic
-            />
-
-            <Popup
-                trigger={<Button type="submit" size="small" onClick={getSortedState} className="other-button" disabled={isSorted}><Icon name='angle double down' /></Button>}
-                content="Decrease array size."
+                trigger={<Button type="submit" size="small" onClick={setHideRange} className="other-button" disabled={onGoing}>{arraySize}</Button>}
+                content="Change array size."
                 basic
             />
 
         </div>
+
 
     );
 }

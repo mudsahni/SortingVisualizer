@@ -36,5 +36,6 @@
 .chart-container {
     /* background-color: #9FC3D1; */
     background-color: var(--chart-background-color);
-    padding: 4vh 3vw 4vh 3vw;
+    padding: 30px 3vw 30px 3vw;
+    height: 800px;
 }
