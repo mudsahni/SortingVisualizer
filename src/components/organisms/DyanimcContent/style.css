@@ -1,0 +1,33 @@
+.content-container {
+    /* background-color: #9FC3D1; */
+    /* background-color: var(--background-color); */
+    padding: 30px 3vw 30px 3vw;
+    /* height: 800px; */
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.content-title {
+    color: var(--title-text-color);
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+}
+
+.content-content {
+    color: var(--title-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05rem;
+    margin-top: 30px;
+}
+
+
+.content-title>span {
+    font-weight: 500;
+}

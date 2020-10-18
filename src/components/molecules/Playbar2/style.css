@@ -14,7 +14,7 @@
     -o-border-radius: 100% !important;
     height: 100px;
     width: 100px;
-    border: 10px solid var(--bar-text-color-default) !important;
+    border: 10px solid #fff !important;
     margin-top: -60px !important;
     text-align: center;
     justify-items: center;

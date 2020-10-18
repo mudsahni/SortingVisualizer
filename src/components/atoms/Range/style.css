@@ -23,6 +23,23 @@
     -webkit-filter: brightness(1.05);
 }
 
+/* .chart-range>.range-button {
+    animation: FadeIn 1s linear !important;
+    animation-fill-mode: both !important;
+    -webkit-animation: FadeIn 1s linear !important;
+} */
+
 .chart-range>.ui.button {
     padding: 10px 1vw 10px !important;
+}
+
+@keyframes FadeIn {
+    0% {
+        opacity: 0;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
 }
