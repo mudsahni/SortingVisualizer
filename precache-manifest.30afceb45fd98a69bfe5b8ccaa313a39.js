@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e828fbda11f193be2e813cc5552d90f7",
+    "revision": "101608c19fb6f2d6e8f340a16ab5d138",
     "url": "/SortingVisualizer/index.html"
   },
   {
-    "revision": "b5c5ed2a8a8e401cedfe",
+    "revision": "3c47a0069342368e25fd",
     "url": "/SortingVisualizer/static/css/2.a8a7e9c8.chunk.css"
   },
   {
-    "revision": "34e18fcd0c1a355629ce",
-    "url": "/SortingVisualizer/static/css/main.263ae82f.chunk.css"
+    "revision": "01057e156128bd32c1a5",
+    "url": "/SortingVisualizer/static/css/main.230887f7.chunk.css"
   },
   {
-    "revision": "b5c5ed2a8a8e401cedfe",
-    "url": "/SortingVisualizer/static/js/2.9a17ed2c.chunk.js"
+    "revision": "3c47a0069342368e25fd",
+    "url": "/SortingVisualizer/static/js/2.90d7f0cc.chunk.js"
   },
   {
     "revision": "5bd09eb7f2cf4d145d532d862be18942",
-    "url": "/SortingVisualizer/static/js/2.9a17ed2c.chunk.js.LICENSE.txt"
+    "url": "/SortingVisualizer/static/js/2.90d7f0cc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "34e18fcd0c1a355629ce",
-    "url": "/SortingVisualizer/static/js/main.462d9fda.chunk.js"
+    "revision": "01057e156128bd32c1a5",
+    "url": "/SortingVisualizer/static/js/main.5f9bc409.chunk.js"
   },
   {
     "revision": "63618b58c9e9fdc84013",
@@ -90,13 +90,5 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "/SortingVisualizer/static/media/outline-icons.ef60a4f6.woff"
-  },
-  {
-    "revision": "dba0c688b8d5ee09a1e214aebd5d25e4",
-    "url": "/SortingVisualizer/static/media/product_sans_bold.dba0c688.ttf"
-  },
-  {
-    "revision": "eae9c18cee82a8a1a52e654911f8fe83",
-    "url": "/SortingVisualizer/static/media/product_sans_regular.eae9c18c.ttf"
   }
 ]);
