@@ -8,6 +8,8 @@
     --chart-background-color: #9FC3D1;
     --danger-color: #c86f5e;
     --title-text-color: #5f6368;
+    --cell-color-default: #fdfdfd;
+    --cell-color-highlight: #9FC3D1;
 }
 
 i.green.icon {

@@ -17,7 +17,7 @@ export const DynamicContent: React.FC<DynamicContentProps> = ({ title, text }) =
                         <span>{title}</span> Sort
                     </div>
                     <div className="content-content">
-                        {text.split('<break>').map(p => <p>{p}</p>)}
+                        {text.split('<break>').map((p, index) => <p key={index}>{p}</p>)}
                     </div>
 
                 </div>

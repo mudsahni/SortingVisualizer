@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.header-title {
+    color: var(--title-text-color);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+}
+
+.content-container {
+    /* background-color: #9FC3D1; */
+    /* background-color: var(--background-color); */
+    padding: 30px 3vw 30px 3vw;
+    /* height: 800px; */
+
+}

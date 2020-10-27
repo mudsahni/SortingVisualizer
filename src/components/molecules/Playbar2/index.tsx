@@ -26,6 +26,11 @@ const Playbar: React.FC<PlaybarProps> = ({
 
         <div className="button-area">
             <Popup
+                trigger={<Button type="submit" size="small" onClick={setHideRange} className="other-button" disabled={onGoing}>{arraySize}</Button>}
+                content="Change array size."
+                basic
+            />
+            <Popup
                 trigger={<Button type="reset" size="small" onClick={generateNewArray} className="other-button"  ><Icon name='random' /></Button>}
                 content="Generate a new array."
                 basic
@@ -33,11 +38,6 @@ const Playbar: React.FC<PlaybarProps> = ({
             <Popup
                 trigger={<Button type="submit" size="small" onClick={getOriginalState} className="other-button" ><Icon name='fast backward' /></Button>}
                 content="Go back to the unsorted state."
-                basic
-            />
-            <Popup
-                trigger={<Button type="submit" size="small" onClick={decreaseSpeed} className="other-button" disabled={isSorted}>x/2</Button>}
-                content="Decrease sorting speed."
                 basic
             />
             {!onGoing ? <Popup
@@ -50,20 +50,23 @@ const Playbar: React.FC<PlaybarProps> = ({
                     basic
                 />}
             <Popup
-                trigger={<Button type="submit" size="small" onClick={increaseSpeed} className="other-button" disabled={isSorted}>2x</Button>}
-                content="Increase sorting speed."
-                basic
-            />
-            <Popup
                 trigger={<Button type="submit" size="small" onClick={getSortedState} className="other-button" disabled={isSorted}><Icon name='fast forward' /></Button>}
                 content="Finish sorting."
                 basic
             />
             <Popup
-                trigger={<Button type="submit" size="small" onClick={setHideRange} className="other-button" disabled={onGoing}>{arraySize}</Button>}
-                content="Change array size."
+                trigger={<Button type="submit" size="small" onClick={decreaseSpeed} className="other-button" disabled={isSorted}>x/2</Button>}
+                content="Decrease sorting speed."
                 basic
             />
+
+            <Popup
+                trigger={<Button type="submit" size="small" onClick={increaseSpeed} className="other-button" disabled={isSorted}>2x</Button>}
+                content="Increase sorting speed."
+                basic
+            />
+
+
 
         </div>
 

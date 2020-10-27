@@ -80,6 +80,7 @@ export const scala = `
     import scala.collection.mutable.ListBuffer
 
     object MergeSort {
+        
         def mergeSort(array: ListBuffer[Integer]): ListBuffer[Integer] = {
             val n: Integer = array.length
             if (n <= 1) array
@@ -93,7 +94,7 @@ export const scala = `
 
         def merge(left: ListBuffer[Integer], right: ListBuffer[Integer]): 
             ListBuffer[Integer] = {
-                
+
             var merged: ListBuffer[Integer] = ListBuffer[Integer]()
             var i: Integer = 0;
             var j: Integer = 0;
@@ -122,4 +123,56 @@ export const scala = `
         }
 
     }
+`
+
+export const java = `
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class MergeSort {
+
+        public static List<Integer> mergeSort(List<Integer> array) {
+            int n = array.size();
+            if (n <= 1) return array;
+            else {
+                int mid = n / 2;
+                List<Integer> left = MergeSort.mergeSort(array.subList(0, mid));
+                List<Integer> right = MergeSort.mergeSort(array.subList(mid, n));
+                return MergeSort.merge(left, right);
+            }
+        }
+
+        public static List<Integer> merge(List<Integer> left, List<Integer> right) {
+            List<Integer> merged = new ArrayList<Integer>();
+            int i = 0;
+            int j = 0;
+            int ln = left.size();
+            int rn = right.size();
+
+            while (i < ln && j < rn) {
+                if (left.get(i) < right.get(j)) {
+                    merged.add(left.get(i));
+                    i++;
+                } else {
+                    merged.add(right.get(j));
+                    j++;
+                }
+            }
+
+            while (i < ln) {
+                merged.add(left.get(i));
+                i++;
+            }
+
+            while (j < rn) {
+                merged.add(right.get(j));
+                j++;
+            }
+
+            return merged;
+        }
+
+    }
+
 `

@@ -15,13 +15,21 @@ const Range: React.FC<RangeProps> = ({ range, size, hide }) => {
         visibility: hide ? "hidden" : "visible",
     } as React.CSSProperties
 
+    const divStyle = (num: number) => {
+        return ({
+            animationName: `FadeIn`,
+            animationDelay: `${num + 1}s`
+        })
+    }
     return (
         <div className="chart-range" style={rangeStyle}>
             {
                 sizeRange.map((num: number) => {
 
                     return (
-                        <Button key={num} size="small" className="range-button" onClick={size}>{num * 10 + 10}</Button>
+                        <div key={num} style={hide ? {} : divStyle(num)}>
+                            <Button size="small" className="range-button" onClick={size}>{num * 10 + 10}</Button>
+                        </div>
                     )
                 })
             }

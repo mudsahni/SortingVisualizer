@@ -19,10 +19,11 @@ import { Legend } from '../../atoms/Legend';
 import { LegendBar } from '../../molecules/LegendBar';
 import ProgressBar from '../../atoms/ProgressBar';
 interface DynamicChartProps {
+    setSortType: any;
 }
 
 
-const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
+const DynamicChart: React.FC<DynamicChartProps> = ({ setSortType }) => {
     const defaultArraySize: number = 10
     const [arraySize, setArraySize] = React.useState<number>(defaultArraySize)
     const [hideRange, setHideRange] = React.useState<boolean>(true)
@@ -213,12 +214,15 @@ const DynamicChart: React.FC<DynamicChartProps> = ({ }) => {
 
         if (data.value === "Bubble Sort") {
             setAlgorithm({ name: getAlgorithmName("BUBBLE"), func: BubbleSort })
+            setSortType("Bubble")
         } else if (data.value === "Insertion Sort") {
             setAlgorithm({ name: getAlgorithmName("INSERTION"), func: InsertionSort })
+            setSortType("Insertion")
         } else if (data.value === "Selection Sort") {
             setAlgorithm({ name: getAlgorithmName("SELECTION"), func: SelectionSort })
         } else if (data.value === "Merge Sort") {
             setAlgorithm({ name: getAlgorithmName("MERGE"), func: MergeSort })
+            setSortType("Merge")
         } else {
             setAlgorithm({ name: getAlgorithmName("BUBBLE"), func: BubbleSort })
         }

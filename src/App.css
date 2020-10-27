@@ -9,7 +9,7 @@
     }
 }
 
-@font-face {
+/* @font-face {
     font-family: ProductSans;
     src: url(product_sans_bold.ttf);
     font-weight: bold;
@@ -18,7 +18,8 @@
 @font-face {
     font-family: ProductSans;
     src: url(product_sans_regular.ttf);
-}
+} */
+
 
 pre {
     border-radius: 7px;
@@ -26,6 +27,7 @@ pre {
     -moz-border-radius: 7px;
     -ms-border-radius: 7px;
     -o-border-radius: 7px;
+    height: 100vh;
 }
 
 .content-row {

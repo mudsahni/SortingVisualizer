@@ -13,7 +13,10 @@ import zenburn from 'react-syntax-highlighter/dist/esm/styles/hljs/zenburn';
 import Content from './content'
 import ts from 'react-syntax-highlighter/dist/esm/languages/hljs/typescript';
 import { DynamicCode } from './components/organisms/DynamicCode';
-
+import { Cell } from './components/atoms/Cell';
+import { CellRow } from './components/molecules/CellRow';
+import { CellGrid } from './components/molecules/CellGrid';
+import Maze from './components/organisms/Maze';
 SyntaxHighlighter.registerLanguage('typescript', ts);
 
 interface AppProps {
@@ -22,7 +25,7 @@ interface AppProps {
 }
 
 export const App: React.FC<AppProps> = ({ }) => {
-    const [sortType, setSortType] = React.useState<string>();
+    const [sortType, setSortType] = React.useState<"Merge" | "Bubble">("Bubble");
 
     return (
 
@@ -30,7 +33,7 @@ export const App: React.FC<AppProps> = ({ }) => {
             <Grid.Row centered columns={1}>
                 <Grid.Column>
 
-                    <DynamicChart />
+                    <DynamicChart setSortType={setSortType} />
                     {/* <Segment placeholder>
 
                         </Segment> */}
@@ -40,20 +43,19 @@ export const App: React.FC<AppProps> = ({ }) => {
             <Grid.Row columns={2} className="content-row">
                 <Grid.Column className="content-column">
 
-                    <DynamicContent title={Content.Bubble.title} text={Content.Bubble.text} />
+                    <DynamicContent title={Content[sortType].title} text={Content[sortType].text} />
                 </Grid.Column>
                 <Grid.Column>
-                    <DynamicCode code={Content.Bubble.code}></DynamicCode>
+                    <DynamicCode code={Content[sortType].code}></DynamicCode>
                 </Grid.Column>
                 <div className="footer">
                     <Divider />
                     <span>Impatiently created by</span><br></br>
                     <span><Icon name="copyright outline"></Icon> <a href="www.muditsahni.com" target="_blank">Mudit Sahni</a></span>
                 </div>
-
             </Grid.Row>
 
-        </Grid>
+        </Grid >
 
     );
 }
